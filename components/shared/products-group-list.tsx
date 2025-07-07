@@ -5,25 +5,26 @@ import { useIntersection } from 'react-use';
 import { Title } from './title';
 import { cn } from '@/lib/utils';
 import { ProductCard } from './product-card';
+import { useCategoryStore } from '@/store/category';
 
 interface Props {
   title: string;
   items: any[];
   className?: string;
   listClassName?: string;
-  categoryId?: string;
+  categoryId: number;
 }
 
 export const ProductsGroupList = ({ title, items, className, listClassName, categoryId }: Props) => {
+  const setActiveCategoryId = useCategoryStore((state) => state.setActiveId);
   const intersectionRef = useRef<HTMLDivElement | null>(null);
-
   const intersection = useIntersection(intersectionRef as RefObject<HTMLDivElement>, {
     threshold: 0.4,
   });
 
   useEffect(() => {
     if (intersection?.isIntersecting) {
-      console.log(title, categoryId);
+      setActiveCategoryId(categoryId);
     }
   }, [intersection?.isIntersecting, categoryId, title]);
   return (
