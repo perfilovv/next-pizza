@@ -8,3 +8,4 @@ export { Filters } from '@/components/shared/filters';
 export { FilterCheckbox } from '@/components/shared/filter-checkbox';
 export { ProductCard } from '@/components/shared/product-card';
 export { ProductsGroupList } from '@/components/shared/products-group-list';
+export { SearchInput } from '@/components/shared/search-input';
